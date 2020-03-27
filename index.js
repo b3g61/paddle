@@ -8,6 +8,9 @@ class Paddle {
 		this.maxSpeed = 7;
 		this.speed = 0;
 
+		this.maxJump = 5;
+		this.jump = 0;
+
 
 		this.position = {
 
@@ -25,6 +28,10 @@ class Paddle {
 		this.speed = +this.maxSpeed;
 	}
 
+	hoppaUpp() {
+		this.jump = -this.maxJump;
+	}
+
 
 
 	draw(ctx){
@@ -36,9 +43,12 @@ class Paddle {
 		if (!deltaTime) return;
 
 		this.position.x += this.speed;
+		this.position.y += this.jump;
 
 
 		if(this.position.x < 0) this.position.x = 0;
+		if(this.position.x > 800 - this.width) this.position.x = 800 - this.width;
+		if(this.position.y < 0) this.position.y = 0;
 	}
 }
 
@@ -59,6 +69,10 @@ class InputHandler {
 				case 39:
 				//alert('hægri')
 				paddle.moveRight();
+				break;
+
+				case 38:
+				paddle.hoppaUpp();
 				break;
 
 			}
