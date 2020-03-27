@@ -36,6 +36,11 @@ class Paddle {
 		this.jump = +this.maxJump;
 	}
 
+	stop() {
+		this.speed = 0;
+		this.jump = 0;
+	}
+
 
 
 	draw(ctx){
@@ -82,6 +87,30 @@ class InputHandler {
 
 				case 40:
 				paddle.faraNiður();
+				break;
+
+			}
+		});
+
+		document.addEventListener('keyup', (event) => {
+			switch(event.keyCode) {
+				
+				case 37:
+				//alert('vinstri');
+				paddle.stop();
+				break;
+
+				case 39:
+				//alert('hægri')
+				paddle.stop();
+				break;
+
+				case 38:
+				paddle.stop();
+				break;
+
+				case 40:
+				paddle.stop();
 				break;
 
 			}
