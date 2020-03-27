@@ -32,6 +32,10 @@ class Paddle {
 		this.jump = -this.maxJump;
 	}
 
+	faraNiður() {
+		this.jump = +this.maxJump;
+	}
+
 
 
 	draw(ctx){
@@ -49,11 +53,12 @@ class Paddle {
 		if(this.position.x < 0) this.position.x = 0;
 		if(this.position.x > 800 - this.width) this.position.x = 800 - this.width;
 		if(this.position.y < 0) this.position.y = 0;
+		if(this.position.y > 600 - this.height) this.position.y = 600 - this.height;
 	}
 }
 
 
-/* 										*/
+/* 		–––––––––––––––––––––––––		*/
 
 class InputHandler {
 
@@ -75,6 +80,10 @@ class InputHandler {
 				paddle.hoppaUpp();
 				break;
 
+				case 40:
+				paddle.faraNiður();
+				break;
+
 			}
 		});
 	}
@@ -86,7 +95,7 @@ class InputHandler {
 
 
 
-/* 										*/
+/* 		–––––––––––––––––––––––––		*/
 
 
 let canvas = document.getElementById("gameScreen");
